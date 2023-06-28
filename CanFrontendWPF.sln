@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33801.468
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanFrontendWPF", "CanFrontendWPF\CanFrontendWPF.csproj", "{A6C20347-15B3-4ECD-892C-DA79DB7363EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6C20347-15B3-4ECD-892C-DA79DB7363EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C20347-15B3-4ECD-892C-DA79DB7363EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C20347-15B3-4ECD-892C-DA79DB7363EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C20347-15B3-4ECD-892C-DA79DB7363EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCAE0964-65BC-4732-B630-7AC9805449A5}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,23 @@
+﻿<Window x:Class="CanFrontendWPF.ReadData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CanFrontendWPF"
+        mc:Ignorable="d"
+        Title="ReadData" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.RowSpan="2" x:Name="tb_show"  Text="{Binding Connection.Device.DeviceName}"></TextBlock>
+        <Button Grid.Row="2" Grid.Column="1" x:Name="button_read" Content="Start Reading" Click="Button_Click"></Button>
+    </Grid>
+</Window>
