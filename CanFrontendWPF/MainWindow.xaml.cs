@@ -1,5 +1,6 @@
 ﻿using InTheHand.Net.Bluetooth;
 using InTheHand.Net.Sockets;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -135,12 +136,34 @@ namespace CanFrontendWPF
 
         private void ReadDataButton_Click(object sender, RoutedEventArgs e)
         {
-            string selectedDeviceName = ConnectedDevicesListBox.SelectedItem as string;
-            DeviceConnection selectedConnection = connectedDevices.FirstOrDefault(d => d.Device.DeviceName == selectedDeviceName);
-            BluetoothDeviceInfo selectedDevice = selectedConnection?.Device;
-            ReadData window = new ReadData();
-            window.Connection = selectedConnection;
-            window.Show();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string selectedFilePath = openFileDialog.FileName;
+                try
+                {
+                    string fileContent = File.ReadAllText(selectedFilePath);
+                    string selectedDeviceName = ConnectedDevicesListBox.SelectedItem as string;
+                    DeviceConnection selectedConnection = connectedDevices.FirstOrDefault(d => d.Device.DeviceName == selectedDeviceName);
+                    BluetoothDeviceInfo selectedDevice = selectedConnection?.Device;
+                    ReadData window = new ReadData();
+                    window.Connection = selectedConnection;
+                    window.CSVFileContend = fileContent;
+                    window.Show();
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show("Fehler beim Lesen der Datei: " + ex.Message);
+                }
+
+
+                
+            }
+
+
+            
         }
     }
 }

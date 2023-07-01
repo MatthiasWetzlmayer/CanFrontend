@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -24,6 +25,7 @@ namespace CanFrontendWPF
     {
         private DeviceConnection connection;
         private Thread thread;
+        private String[] headers;
 
         internal DeviceConnection Connection
         {
@@ -33,6 +35,8 @@ namespace CanFrontendWPF
                 Title = value.Device.DeviceName;
             }
         }
+
+        public String CSVFileContend { get; set; }
 
         private bool reading = false;
         public ReadData()
@@ -48,6 +52,7 @@ namespace CanFrontendWPF
                 reading = false;
                 thread.Abort();
             }else{
+                this.headers = GenerateDataGrid();
                 thread = new Thread(() => DoWork(connection));
                 thread.Start();
                 button_read.Content = "Stop Reading";
@@ -57,6 +62,25 @@ namespace CanFrontendWPF
            
 
             
+        }
+
+
+        private String[] GenerateDataGrid()
+        {
+            string[] headers = CSVFileContend.Split(';');
+
+            // Erstelle die Tabelle dynamisch
+            dg_show.AutoGenerateColumns = true;
+
+            // Erstelle die Spalten für die Überschriften
+            foreach (string header in headers)
+            {
+                dg_show.Columns.Add(new DataGridTextColumn() { Header = header });
+            }
+
+            return headers;
+
+
         }
         void DoWork(DeviceConnection connection)
         {
@@ -73,13 +97,18 @@ namespace CanFrontendWPF
                     {
                         bytesRead = stream.Read(buffer, 0, buffer.Length);
                         string data = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+                        String[] values = data.Split(';');  
+                        Dictionary<string, string> rowData = new Dictionary<string, string>();
+                        for (int i = 0; i < this.headers.Length; i++) {
+                            rowData.Add(headers[i], values[i]);
+                        }
 
-                        Application.Current.Dispatcher.Invoke(new Action(() => tb_show.Text= tb_show.Text+data));
+                        
+                        Application.Current.Dispatcher.Invoke(new Action(() => dg_show.Items.Add(rowData)));
                     }
                     catch (IOException)
                     {
-                        // Handle any exceptions that may occur during reading
-                        // For example, the client may have disconnected
+                        
                         break;
                     }
                 }

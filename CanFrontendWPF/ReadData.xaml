@@ -17,7 +17,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.RowSpan="2" x:Name="tb_show"  Text="{Binding Connection.Device.DeviceName}"></TextBlock>
+        <DataGrid Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="dg_show"></DataGrid>
         <Button Grid.Row="2" Grid.Column="1" x:Name="button_read" Content="Start Reading" Click="Button_Click"></Button>
     </Grid>
 </Window>
