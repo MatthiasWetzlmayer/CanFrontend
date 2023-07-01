@@ -17,7 +17,9 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="dg_show"></DataGrid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3">
+            <TextBlock  x:Name="tb_show" ></TextBlock>
+        </ScrollViewer>
         <Button Grid.Row="2" Grid.Column="1" x:Name="button_read" Content="Start Reading" Click="Button_Click"></Button>
     </Grid>
 </Window>

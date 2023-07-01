@@ -161,9 +161,6 @@ namespace CanFrontendWPF
 
                 
             }
-
-
-            
         }
     }
 }

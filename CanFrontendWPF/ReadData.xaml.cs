@@ -1,8 +1,14 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.Dynamic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,9 +18,11 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace CanFrontendWPF
 {
@@ -26,6 +34,7 @@ namespace CanFrontendWPF
         private DeviceConnection connection;
         private Thread thread;
         private String[] headers;
+        public DataTable dataTable;
 
         internal DeviceConnection Connection
         {
@@ -36,7 +45,7 @@ namespace CanFrontendWPF
             }
         }
 
-        public String CSVFileContend { get; set; }
+        public String CSVFileContend => "Header1;Header2;Header3";
 
         private bool reading = false;
         public ReadData()
@@ -52,7 +61,6 @@ namespace CanFrontendWPF
                 reading = false;
                 thread.Abort();
             }else{
-                this.headers = GenerateDataGrid();
                 thread = new Thread(() => DoWork(connection));
                 thread.Start();
                 button_read.Content = "Stop Reading";
@@ -65,56 +73,50 @@ namespace CanFrontendWPF
         }
 
 
-        private String[] GenerateDataGrid()
-        {
-            string[] headers = CSVFileContend.Split(';');
-
-            // Erstelle die Tabelle dynamisch
-            dg_show.AutoGenerateColumns = true;
-
-            // Erstelle die Spalten für die Überschriften
-            foreach (string header in headers)
-            {
-                dg_show.Columns.Add(new DataGridTextColumn() { Header = header });
-            }
-
-            return headers;
-
-
-        }
         void DoWork(DeviceConnection connection)
         {
             try
             {
-                NetworkStream stream = connection.Client.GetStream();
+                //NetworkStream stream = connection.Client.GetStream();
 
                 byte[] buffer = new byte[1024];
                 int bytesRead;
-
                 while (true)
                 {
                     try
                     {
-                        bytesRead = stream.Read(buffer, 0, buffer.Length);
-                        string data = Encoding.ASCII.GetString(buffer, 0, bytesRead);
-                        String[] values = data.Split(';');  
-                        Dictionary<string, string> rowData = new Dictionary<string, string>();
-                        for (int i = 0; i < this.headers.Length; i++) {
-                            rowData.Add(headers[i], values[i]);
+                        /*bytesRead = stream.Read(buffer, 0, buffer.Length);
+                        string data = Encoding.ASCII.GetString(buffer, 0, bytesRead);*/
+                        string data = "10;60;40#";
+                        String[] lines = data.Split('#');
+                        lines = lines.Where(x => x.Split(';').Length > 0).ToArray();
+
+                        List<String> rowData = new List<String>();
+                        foreach (string line in lines)
+                        {
+                            Application.Current.Dispatcher.Invoke(new Action(() => tb_show.Text += line+"\n"));
+
                         }
 
-                        
-                        Application.Current.Dispatcher.Invoke(new Action(() => dg_show.Items.Add(rowData)));
+                        buffer = new byte[1024];
+                        Thread.Sleep(1000);
                     }
                     catch (IOException)
                     {
-                        
+
                         break;
                     }
                 }
             }
-            catch(ThreadAbortException ex) { }
-           
+            catch (ThreadAbortException ex) { }
+
         }
+
+        
     }
 }
+
+
+
+
+
