@@ -45,7 +45,7 @@ namespace CanFrontendWPF
             }
         }
 
-        public String CSVFileContend => "Header1;Header2;Header3";
+        public String CSVFileContend { get; set; }
 
         private bool reading = false;
         public ReadData()
@@ -77,7 +77,7 @@ namespace CanFrontendWPF
         {
             try
             {
-                //NetworkStream stream = connection.Client.GetStream();
+                NetworkStream stream = connection.Client.GetStream();
 
                 byte[] buffer = new byte[1024];
                 int bytesRead;
@@ -85,9 +85,8 @@ namespace CanFrontendWPF
                 {
                     try
                     {
-                        /*bytesRead = stream.Read(buffer, 0, buffer.Length);
-                        string data = Encoding.ASCII.GetString(buffer, 0, bytesRead);*/
-                        string data = "10;60;40#";
+                        bytesRead = stream.Read(buffer, 0, buffer.Length);
+                        string data = Encoding.ASCII.GetString(buffer, 0, bytesRead);
                         String[] lines = data.Split('#');
                         lines = lines.Where(x => x.Split(';').Length > 0).ToArray();
 

@@ -35,3 +35,12 @@ C:\Users\User\OneDrive - FH OOe\Desktop\FH\Erstes Jahr\4.Sem\Pro\Projekt\canFron
 C:\Users\User\OneDrive - FH OOe\Desktop\FH\Erstes Jahr\4.Sem\Pro\Projekt\canFrontendWpf\CanFrontendWPF\CanFrontendWPF\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\User\OneDrive - FH OOe\Desktop\FH\Erstes Jahr\4.Sem\Pro\Projekt\canFrontendWpf\CanFrontendWPF\CanFrontendWPF\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\User\OneDrive - FH OOe\Desktop\FH\Erstes Jahr\4.Sem\Pro\Projekt\canFrontendWpf\CanFrontendWPF\CanFrontendWPF\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\User\OneDrive - FH OOe\Desktop\FH\Erstes Jahr\4.Sem\Pro\Projekt\canFrontendWpf\CanFrontendWPF\CanFrontendWPF\bin\Debug\MaterialDesignColors.dll
+C:\Users\User\OneDrive - FH OOe\Desktop\FH\Erstes Jahr\4.Sem\Pro\Projekt\canFrontendWpf\CanFrontendWPF\CanFrontendWPF\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\User\OneDrive - FH OOe\Desktop\FH\Erstes Jahr\4.Sem\Pro\Projekt\canFrontendWpf\CanFrontendWPF\CanFrontendWPF\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\User\OneDrive - FH OOe\Desktop\FH\Erstes Jahr\4.Sem\Pro\Projekt\canFrontendWpf\CanFrontendWPF\CanFrontendWPF\bin\Debug\MaterialDesignColors.pdb
+C:\Users\User\OneDrive - FH OOe\Desktop\FH\Erstes Jahr\4.Sem\Pro\Projekt\canFrontendWpf\CanFrontendWPF\CanFrontendWPF\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\User\OneDrive - FH OOe\Desktop\FH\Erstes Jahr\4.Sem\Pro\Projekt\canFrontendWpf\CanFrontendWPF\CanFrontendWPF\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\User\OneDrive - FH OOe\Desktop\FH\Erstes Jahr\4.Sem\Pro\Projekt\canFrontendWpf\CanFrontendWPF\CanFrontendWPF\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\User\OneDrive - FH OOe\Desktop\FH\Erstes Jahr\4.Sem\Pro\Projekt\canFrontendWpf\CanFrontendWPF\CanFrontendWPF\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\User\OneDrive - FH OOe\Desktop\FH\Erstes Jahr\4.Sem\Pro\Projekt\canFrontendWpf\CanFrontendWPF\CanFrontendWPF\obj\Debug\App.baml
