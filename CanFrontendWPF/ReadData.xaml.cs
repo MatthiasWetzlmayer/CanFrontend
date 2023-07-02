@@ -60,7 +60,9 @@ namespace CanFrontendWPF
                 button_read.Content = "Start Reading";
                 reading = false;
                 thread.Abort();
+                tb_show.Text = "";
             }else{
+                tb_show.Text += CSVFileContend + "\n";
                 thread = new Thread(() => DoWork(connection));
                 thread.Start();
                 button_read.Content = "Stop Reading";
